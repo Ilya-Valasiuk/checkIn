@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="page-header">
+	  <h1>Attenders</h1>
+	</div>
+	<!-- <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% _.each(attenders, function(attender) {%>
+        <tr data-id="<%= attender.id %>" data-model="attender">
+          <td><%= attender.attenderName %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table> -->
+    <% _.each(attenders, function(attender) {%>
+          <span class="listOfAttenders"><%= attender.attenderName %></span>
+        <% }) %>
+</div>

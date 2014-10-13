@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="page-header">
+	  <h1>Events <a href="/events/new" class="newEvent"><span class="label label-success">New</span></a></h1>
+	</div>
+	<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Event</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% _.each(events, function(event) {%>
+        <tr data-id="<%= event.id %>" data-model="event">
+          <td><a href="/events/show/<%= event.id %>"><%= event.id %></a></td>
+          <td><%= event.eventName %></td>
+			<td><%= event.date %></td>
+			<td><%= event.time %></td>
+			<td class="baseEl qrCodeEl" data-eventId="<%= event.id %>"></td>
+			<td class="baseEl attendersEl"><a href="/attenders/show/<%= event.id %>" class="attendersLink"></a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
