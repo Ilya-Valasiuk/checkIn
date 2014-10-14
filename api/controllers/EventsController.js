@@ -12,12 +12,13 @@ module.exports = {
 	},
 
 	'create': function(req, res, next) {
-		Events.create(req.params.all(), function (err, event) {
+		var newEvent = req.params.all();
+		newEvent.eventName = newEvent.eventName.trim();
+		Events.create(newEvent, function (err, event) {
 			if(err) {
 				return res.redirect('/events/new');
 			}
-			console.log('here redirect');
-			res.redirect('events/show/' + event.id);
+			res.redirect('events/show/' + event.eventName);
 		});
 	},
 
@@ -31,7 +32,8 @@ module.exports = {
 	},
 
 	'show': function(req, res, next) {
-		Events.findOne(req.param('id'), function(err, event) {
+		Events.findOne({where: {eventName: req.param('id')}}, function(err, event) {
+			console.log(event);
 			if(err) return next(err);
 			if(!event) return next();
 

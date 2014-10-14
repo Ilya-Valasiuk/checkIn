@@ -10,11 +10,10 @@ module.exports = {
   attributes: {
   	attenderName: {
   		type: 'string',
-  		required: true,
-      unique: true
+  		required: true
   	},
-  	eventId: {
-  		type: 'integer',
+  	eventName: {
+  		type: 'string',
   		required: true	
   	}
   }

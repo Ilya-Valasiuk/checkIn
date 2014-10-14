@@ -7,7 +7,7 @@
 
 module.exports = {
 	'show': function(req, res, next) {
-		Attenders.find({where: {eventId: req.param('id')}}, function(err, attenders) {
+		Attenders.find({where: {eventName: req.param('id')}}, function(err, attenders) {
 			if(err) return next(err);
 			res.view({
 				attenders: attenders
@@ -16,7 +16,13 @@ module.exports = {
 	},
 
 	'create': function(req, res, next) {
-		Attenders.create(req.params.all(), function (err, attender) {
+		var attender = {
+			attenderName: req.param('attenderName'),
+			eventName: req.param('eventName')
+		}
+		console.log(attender);
+		Attenders.create(attender, function (err, attender) {
+			console.log(err);
 			if(err) {
 				return res.redirect('/event/show/' + req.param('id'));
 			}

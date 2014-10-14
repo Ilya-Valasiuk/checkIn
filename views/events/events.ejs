@@ -5,7 +5,6 @@
 	<table class="table table-striped">
       <thead>
         <tr>
-          <th>#</th>
           <th>Event</th>
           <th>Date</th>
           <th>Time</th>
@@ -16,12 +15,11 @@
       <tbody>
       <% _.each(events, function(event) {%>
         <tr data-id="<%= event.id %>" data-model="event">
-          <td><a href="/events/show/<%= event.id %>"><%= event.id %></a></td>
-          <td><%= event.eventName %></td>
+          <td><a href="/events/show/<%= event.eventName %>"><%= event.eventName %><a></td>
 			<td><%= event.date %></td>
 			<td><%= event.time %></td>
 			<td class="baseEl qrCodeEl" data-eventId="<%= event.id %>"></td>
-			<td class="baseEl attendersEl"><a href="/attenders/show/<%= event.id %>" class="attendersLink"></a></td>
+			<td class="baseEl attendersEl"><a href="/attenders/show/<%= event.eventName %>" class="attendersLink"></a></td>
         </tr>
         <% }) %>
       </tbody>
